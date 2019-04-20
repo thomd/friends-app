@@ -1,21 +1,16 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
-import { Icon } from 'expo'
 
-export class Home extends Component {
+export class Friends extends Component {
   render() {
     const { navigation } = this.props
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
-        <Button title="Go to Friend" onPress={() => navigation.navigate('FriendScreen')} />
+        <Text>Friend</Text>
+        <Button title="Back" onPress={() => navigation.goBack()} />
       </View>
     )
   }
-}
-
-export const HomeIcon = ({ tintColor }) => {
-  return <Icon.Feather name="home" size={24} color={tintColor} />
 }
 
 const styles = StyleSheet.create({
