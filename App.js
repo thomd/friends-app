@@ -1,10 +1,8 @@
-import { createAppContainer, createBottomTabNavigator } from "react-navigation";
-import Home from "./js/screens/Home";
-import Settings from "./js/screens/Settings";
+import React, { Component } from "react";
+import AppNavigator from "./js/AppNavigator";
 
-const TabNavigator = createBottomTabNavigator({
-  Home: Home,
-  Settings: Settings
-});
-
-export default createAppContainer(TabNavigator);
+export default class App extends Component {
+  render() {
+    return <AppNavigator />;
+  }
+}
