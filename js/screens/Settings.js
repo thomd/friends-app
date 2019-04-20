@@ -1,21 +1,26 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { Component } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { Icon } from 'expo'
 
-export default class Settings extends Component {
+export class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text>Settings</Text>
       </View>
-    );
+    )
   }
+}
+
+export const SettingsIcon = ({ tintColor }) => {
+  return <Icon.Feather name="settings" size={24} color={tintColor} />
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center"
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
-});
+})
