@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, StyleSheet, Text, ScrollView } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, ScrollView } from 'react-native'
 
 export class Friends extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -19,6 +19,8 @@ export class Friends extends Component {
   }
 }
 
+const width = Dimensions.get('window').width * 0.75
+
 const styles = StyleSheet.create({
   scrollview: {
     backgroundColor: 'white'
@@ -29,6 +31,8 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   image: {
+    width: width,
+    height: width,
     marginBottom: 10
   }
 })
