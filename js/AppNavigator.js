@@ -5,7 +5,16 @@ import { Friends as FriendScreen } from './screens/Friend'
 import { Home as HomeScreen, HomeIcon } from './screens/Home'
 import { Settings as SettingsScreen, SettingsIcon } from './screens/Settings'
 
-const HomeStack = createStackNavigator({ HomeScreen, FriendScreen })
+const HomeStack = createStackNavigator(
+  { HomeScreen, FriendScreen },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: 'aliceblue'
+      }
+    }
+  }
+)
 
 const TabNavigator = createBottomTabNavigator(
   {

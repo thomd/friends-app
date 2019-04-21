@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 
 export class Friends extends Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('friend')
+    }
+  }
   render() {
     const { navigation } = this.props
+    const friend = navigation.getParam('friend')
     return (
       <View style={styles.container}>
-        <Text>Friend</Text>
+        <Text>{friend}</Text>
         <Button title="Back" onPress={() => navigation.goBack()} />
       </View>
     )

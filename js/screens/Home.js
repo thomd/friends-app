@@ -3,12 +3,20 @@ import { StyleSheet, Text, View, Button } from 'react-native'
 import { Icon } from 'expo'
 
 export class Home extends Component {
+  static navigationOptions = { header: null }
   render() {
     const { navigation } = this.props
     return (
       <View style={styles.container}>
         <Text>Home</Text>
-        <Button title="Go to Friend" onPress={() => navigation.navigate('FriendScreen')} />
+        <Button
+          title="Go to Friend"
+          onPress={() =>
+            navigation.navigate('FriendScreen', {
+              friend: 'Alice'
+            })
+          }
+        />
       </View>
     )
   }
