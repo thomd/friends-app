@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, FlatList, View, Button } from 'react-native'
+import { StyleSheet, FlatList, View } from 'react-native'
 import { Icon } from 'expo'
+import { FriendListItem } from '../components/FriendListItem'
 
 export class Home extends Component {
   static navigationOptions = { header: null }
@@ -11,8 +12,8 @@ export class Home extends Component {
         <FlatList
           data={[{ key: '1', name: 'Alice' }, { key: '2', name: 'Bob' }]}
           renderItem={({ item }) => (
-            <Button
-              title={`Go to ${item.name}`}
+            <FriendListItem
+              item={item}
               onPress={() =>
                 navigation.navigate('FriendScreen', {
                   friend: item.name
