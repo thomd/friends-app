@@ -10,7 +10,13 @@ export class Home extends Component {
     return (
       <View style={styles.container}>
         <FlatList
-          data={[{ key: '1', name: 'Alice' }, { key: '2', name: 'Bob' }]}
+          data={[
+            { key: '1', name: 'Alice' },
+            { key: '2', name: 'Bob' },
+            { key: '3', name: 'Paul' },
+            { key: '4', name: 'Alfred' }
+          ]}
+          keyExtractor={item => item.name}
           renderItem={({ item }) => (
             <FriendListItem
               item={item}
@@ -21,6 +27,7 @@ export class Home extends Component {
               }
             />
           )}
+          ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
         />
       </View>
     )
@@ -35,6 +42,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 100
+    marginTop: 40
+  },
+  listSeparator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: 'grey',
+    marginVertical: 5
   }
 })
