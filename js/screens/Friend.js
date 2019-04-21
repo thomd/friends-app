@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { Image, StyleSheet, Text, ScrollView } from 'react-native'
 
 export class Friends extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -11,19 +11,24 @@ export class Friends extends Component {
     const { navigation } = this.props
     const friend = navigation.getParam('friend')
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.scrollview} contentContainerStyle={styles.container}>
+        <Image style={styles.image} source={require('../../assets/icon.png')} />
         <Text>Hi {friend}</Text>
-        <Button title="Back" onPress={() => navigation.goBack()} />
-      </View>
+      </ScrollView>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  scrollview: {
+    backgroundColor: 'white'
+  },
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginTop: 40
+  },
+  image: {
+    marginBottom: 10
   }
 })

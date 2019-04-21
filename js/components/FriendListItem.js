@@ -1,6 +1,25 @@
 import React from 'react'
-import { Button } from 'react-native'
+import { Image, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 export const FriendListItem = ({ item, onPress }) => {
-  return <Button title={`Go to ${item.name}`} onPress={onPress} />
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={require('../../assets/icon.png')} />
+        <Text>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
+  )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    padding: 10
+  },
+  image: {
+    width: 50,
+    height: 50,
+    marginRight: 15
+  }
+})
