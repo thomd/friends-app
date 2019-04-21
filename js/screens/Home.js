@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, FlatList, View, Button } from 'react-native'
 import { Icon } from 'expo'
 
 export class Home extends Component {
@@ -8,14 +8,18 @@ export class Home extends Component {
     const { navigation } = this.props
     return (
       <View style={styles.container}>
-        <Text>Home</Text>
-        <Button
-          title="Go to Friend"
-          onPress={() =>
-            navigation.navigate('FriendScreen', {
-              friend: 'Alice'
-            })
-          }
+        <FlatList
+          data={[{ key: '1', name: 'Alice' }, { key: '2', name: 'Bob' }]}
+          renderItem={({ item }) => (
+            <Button
+              title={`Go to ${item.name}`}
+              onPress={() =>
+                navigation.navigate('FriendScreen', {
+                  friend: item.name
+                })
+              }
+            />
+          )}
         />
       </View>
     )
@@ -30,7 +34,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    marginTop: 100
   }
 })

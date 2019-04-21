@@ -12,7 +12,7 @@ export class Friends extends Component {
     const friend = navigation.getParam('friend')
     return (
       <View style={styles.container}>
-        <Text>{friend}</Text>
+        <Text>Hi {friend}</Text>
         <Button title="Back" onPress={() => navigation.goBack()} />
       </View>
     )
