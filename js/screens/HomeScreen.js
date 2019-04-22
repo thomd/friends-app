@@ -3,7 +3,7 @@ import { StyleSheet, FlatList, View } from 'react-native'
 import { Icon } from 'expo'
 import { FriendListItem } from '../components/FriendListItem'
 
-export class Home extends Component {
+export class HomeScreen extends Component {
   static navigationOptions = { header: null }
   render() {
     const { navigation } = this.props
@@ -11,18 +11,18 @@ export class Home extends Component {
       <View style={styles.container}>
         <FlatList
           data={[
-            { key: '1', name: 'Alice' },
-            { key: '2', name: 'Bob' },
-            { key: '3', name: 'Paul' },
-            { key: '4', name: 'Alfred' }
+            { first: 'Alice', last: 'Kaminsky', email: 'test1@example.com' },
+            { first: 'Bob', last: 'Kaminsky', email: 'test2@example.com' },
+            { first: 'Paul', last: 'Kaminsky', email: 'test3@example.com' },
+            { first: 'Alfred', last: 'Kaminsky', email: 'test4@example.com' }
           ]}
-          keyExtractor={item => item.name}
+          keyExtractor={item => item.email}
           renderItem={({ item }) => (
             <FriendListItem
               item={item}
               onPress={() =>
-                navigation.navigate('FriendScreen', {
-                  friend: item.name
+                navigation.navigate('FriendsScreen', {
+                  friend: item
                 })
               }
             />

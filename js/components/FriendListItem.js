@@ -6,7 +6,10 @@ export const FriendListItem = ({ item, onPress }) => {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Image style={styles.image} source={require('../../assets/icon.png')} />
-        <Text>{item.name}</Text>
+        <Text>
+          {item.first} {item.last}
+        </Text>
+        <Text>{item.email}</Text>
       </View>
     </TouchableOpacity>
   )
