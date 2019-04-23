@@ -1,21 +1,35 @@
 import React, { Component } from 'react'
-import { StyleSheet, FlatList, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, FlatList, View } from 'react-native'
 import { Icon } from 'expo'
 import { FriendListItem } from '../components/FriendListItem'
 
 export class HomeScreen extends Component {
   static navigationOptions = { header: null }
+  state = { data: [], isLoading: true }
+
+  _fetchData = async () => {
+    const response = await fetch('https://randomuser.me/api/?results=20')
+    const friends = await response.json()
+    this.setState({ data: friends.results, isLoading: false })
+  }
+
+  componentDidMount() {
+    this._fetchData()
+  }
+
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="black" />
+        </View>
+      )
+    }
     const { navigation } = this.props
     return (
       <View style={styles.container}>
         <FlatList
-          data={[
-            { first: 'Alice', last: 'Kaminsky', email: 'test1@example.com' },
-            { first: 'Bob', last: 'Kaminsky', email: 'test2@example.com' },
-            { first: 'Paul', last: 'Kaminsky', email: 'test3@example.com' },
-            { first: 'Alfred', last: 'Kaminsky', email: 'test4@example.com' }
-          ]}
+          data={this.state.data}
           keyExtractor={item => item.email}
           renderItem={({ item }) => (
             <FriendListItem
@@ -41,6 +55,7 @@ export const HomeIcon = ({ tintColor }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     backgroundColor: '#fff',
     marginTop: 40
   },

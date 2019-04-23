@@ -8,7 +8,7 @@ export const FriendListItem = ({ item, onPress }) => {
         <Image style={styles.image} source={require('../../assets/icon.png')} />
         <View style={styles.info}>
           <Text style={styles.name}>
-            {item.first} {item.last}
+            {item.name.first} {item.name.last}
           </Text>
           <Text>{item.email}</Text>
         </View>
