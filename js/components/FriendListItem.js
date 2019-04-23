@@ -6,10 +6,12 @@ export const FriendListItem = ({ item, onPress }) => {
     <TouchableOpacity onPress={onPress}>
       <View style={styles.container}>
         <Image style={styles.image} source={require('../../assets/icon.png')} />
-        <Text>
-          {item.first} {item.last}
-        </Text>
-        <Text>{item.email}</Text>
+        <View style={styles.info}>
+          <Text style={styles.name}>
+            {item.first} {item.last}
+          </Text>
+          <Text>{item.email}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   )
@@ -23,6 +25,14 @@ const styles = StyleSheet.create({
   image: {
     width: 50,
     height: 50,
-    marginRight: 15
+    marginRight: 15,
+    borderRadius: 25
+  },
+  info: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
+  },
+  name: {
+    fontWeight: 'bold'
   }
 })
