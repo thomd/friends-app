@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ActivityIndicator, StyleSheet, FlatList, View } from 'react-native'
+import { ActivityIndicator, Alert, StyleSheet, FlatList, View, Text } from 'react-native'
 import { Icon } from 'expo'
 import { FriendListItem } from '../components/FriendListItem'
 
@@ -8,9 +8,14 @@ export class HomeScreen extends Component {
   state = { data: [], isLoading: true }
 
   _fetchData = async () => {
-    const response = await fetch('https://randomuser.me/api/?results=20')
-    const friends = await response.json()
-    this.setState({ data: friends.results, isLoading: false })
+    try {
+      const response = await fetch('https://randomuser.me/api/?results=20')
+      const friends = await response.json()
+      this.setState({ data: friends.results, isLoading: false })
+    } catch (error) {
+      Alert.alert('No Internet Connection')
+      this.setState({ isLoading: false })
+    }
   }
 
   componentDidMount() {
@@ -25,6 +30,7 @@ export class HomeScreen extends Component {
         </View>
       )
     }
+
     const { navigation } = this.props
     return (
       <View style={styles.container}>
@@ -42,6 +48,7 @@ export class HomeScreen extends Component {
             />
           )}
           ItemSeparatorComponent={() => <View style={styles.listSeparator} />}
+          ListEmptyComponent={() => <Text style={styles.listEmpty}>No Data</Text>}
         />
       </View>
     )
@@ -63,5 +70,10 @@ const styles = StyleSheet.create({
     height: StyleSheet.hairlineWidth,
     backgroundColor: 'grey',
     marginVertical: 5
+  },
+  listEmpty: {
+    fontSize: 32,
+    paddingTop: 100,
+    textAlign: 'center'
   }
 })
