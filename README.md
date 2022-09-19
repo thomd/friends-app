@@ -1,6 +1,6 @@
 # Friends-List React-Native App
 
-An example React-Native app.
+A **learning project** of a React-Native app.
 
 <img src="https://raw.githubusercontent.com/thomd/friends-app/screenshots/screenshot.png" width="50%">
 
